@@ -54,7 +54,6 @@ namespace WindowsFormsApp1
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -279,7 +278,6 @@ namespace WindowsFormsApp1
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Location = new System.Drawing.Point(12, 550);
@@ -287,13 +285,6 @@ namespace WindowsFormsApp1
             this.groupBox3.Size = new System.Drawing.Size(1101, 77);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(413, 28);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(188, 22);
-            this.textBox7.TabIndex = 7;
             // 
             // button5
             // 
@@ -332,11 +323,8 @@ namespace WindowsFormsApp1
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.TextBox textBox7;
 
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

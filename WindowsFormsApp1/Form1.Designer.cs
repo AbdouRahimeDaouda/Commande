@@ -277,10 +277,12 @@
             // 
             // textBox3
             // 
+            this.textBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.textBox3.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.textBox3.Location = new System.Drawing.Point(6, 21);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(219, 26);
             this.textBox3.TabIndex = 6;
             this.textBox3.Text = "Recherche de Commande";

@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
             f.cp.Text =dataGridView1.CurrentRow.Cells[4].Value.ToString();
             f.tel.Text =dataGridView1.CurrentRow.Cells[5].Value.ToString();
 
-            
             f.ShowDialog();
             this.Close();
           
