@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             
             Connexion conn = new Connexion();
           
-            MySqlCommand commnand = new MySqlCommand("INSERT INTO `client`(`Nom`, `Rue`, `Ville`, `CP`, `Tel`) VALUES (@nom,@rue,@ville,@cp,@tel)", conn.getConnection());
+            MySqlCommand commnand = new MySqlCommand("INSERT INTO `commande`(`Nom`, `Rue`, `Ville`, `CP`, `Tel`) VALUES (@nom,@rue,@ville,@cp,@tel)", conn.getConnection());
             //@nom,@rue,@ville,@cp,@tel
             commnand.Parameters.Add("@nom", MySqlDbType.VarChar).Value = clt.Text;
             commnand.Parameters.Add("@rue", MySqlDbType.VarChar).Value = rue.Text;

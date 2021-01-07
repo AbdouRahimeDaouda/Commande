@@ -132,8 +132,65 @@ namespace WindowsFormsApp1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Connexion conn = new Connexion();
+          
+            MySqlCommand commnand = new MySqlCommand("INSERT INTO `commande`(`NumClient`) VALUES (NULL)", conn.getConnection());
+            
+            conn.openConnection();
+            commnand.ExecuteNonQuery();
+            conn.closeConnection();
+
             F f2 = new F(); 
             f2.ShowDialog();
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            filterByDate();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            filterByDate();
+        }
+
+        public void filterByDate()
+        {
+            Connexion conn = new Connexion();
+            String deb = dateTimePicker1.Value.ToString("yyyy/MM/dd");
+            String end = dateTimePicker2.Value.ToString("yyyy/MM/dd");
+            
+            MySqlCommand commnand = new MySqlCommand("SELECT * FROM `commande` WHERE DateCommande BETWEEN '" + deb + " 'and'" + end + "'", conn.getConnection());
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
+            adapter.SelectCommand = commnand;
+            adapter.Fill(table);
+
+            commandeTab.DataSource = table;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int id=Convert.ToInt32((commandeTab.CurrentRow.Cells[0].Value.ToString()));
+            Connexion conn = new Connexion();
+          
+            DataTable tableCde = new DataTable();
+            MySqlCommand commnand = new MySqlCommand("DELETE FROM `commande` WHERE NumCmd=@id", conn.getConnection());
+            MySqlCommand commnand1 = new MySqlCommand("select NumCmd as 'RefCommande', DateCommande as 'Date', Nom as 'Nom' from commande d, client c where c.NumCleint=d.NumClient", conn.getConnection());
+
+            commnand.Parameters.Add("@id", MySqlDbType.VarChar).Value = id;
+            MySqlDataAdapter adapterCde = new MySqlDataAdapter();
+            conn.openConnection();
+            commnand.ExecuteNonQuery();
+            adapterCde.SelectCommand = commnand1;
+            adapterCde.Fill(tableCde);
+            commandeTab.DataSource = tableCde;
         }
     }
 }

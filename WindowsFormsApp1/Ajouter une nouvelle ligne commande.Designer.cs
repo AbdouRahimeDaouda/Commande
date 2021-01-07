@@ -215,6 +215,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Ajouter_une_nouvelle_ligne_commande";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ajouter_une_nouvelle_ligne_commande";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

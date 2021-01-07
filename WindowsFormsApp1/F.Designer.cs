@@ -38,11 +38,11 @@ namespace WindowsFormsApp1
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tel = new System.Windows.Forms.TextBox();
+            this.cp = new System.Windows.Forms.TextBox();
+            this.ville = new System.Windows.Forms.TextBox();
+            this.rue = new System.Windows.Forms.TextBox();
+            this.clt = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -54,6 +54,7 @@ namespace WindowsFormsApp1
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -70,11 +71,11 @@ namespace WindowsFormsApp1
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tel);
+            this.groupBox1.Controls.Add(this.cp);
+            this.groupBox1.Controls.Add(this.ville);
+            this.groupBox1.Controls.Add(this.rue);
+            this.groupBox1.Controls.Add(this.clt);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -124,9 +125,9 @@ namespace WindowsFormsApp1
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(108, 52);
+            this.label4.Location = new System.Drawing.Point(76, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 22);
+            this.label4.Size = new System.Drawing.Size(61, 22);
             this.label4.TabIndex = 10;
             this.label4.Text = "Client";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -140,47 +141,47 @@ namespace WindowsFormsApp1
             this.label3.TabIndex = 9;
             this.label3.Text = "Pour choisir un client, il faut mettre le curseur sur le champ client, ensuite ap" + "puyer sur la touche ENTREE";
             // 
-            // textBox6
+            // tel
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox6.Location = new System.Drawing.Point(865, 138);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(173, 22);
-            this.textBox6.TabIndex = 8;
+            this.tel.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.tel.Location = new System.Drawing.Point(865, 138);
+            this.tel.Name = "tel";
+            this.tel.Size = new System.Drawing.Size(173, 22);
+            this.tel.TabIndex = 8;
             // 
-            // textBox5
+            // cp
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox5.Location = new System.Drawing.Point(560, 138);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(224, 22);
-            this.textBox5.TabIndex = 7;
+            this.cp.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.cp.Location = new System.Drawing.Point(560, 138);
+            this.cp.Name = "cp";
+            this.cp.Size = new System.Drawing.Size(224, 22);
+            this.cp.TabIndex = 7;
             // 
-            // textBox4
+            // ville
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox4.Location = new System.Drawing.Point(155, 138);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(274, 22);
-            this.textBox4.TabIndex = 6;
+            this.ville.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.ville.Location = new System.Drawing.Point(155, 138);
+            this.ville.Name = "ville";
+            this.ville.Size = new System.Drawing.Size(274, 22);
+            this.ville.TabIndex = 6;
             // 
-            // textBox3
+            // rue
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox3.Location = new System.Drawing.Point(155, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(882, 22);
-            this.textBox3.TabIndex = 5;
+            this.rue.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.rue.Location = new System.Drawing.Point(155, 94);
+            this.rue.Name = "rue";
+            this.rue.Size = new System.Drawing.Size(882, 22);
+            this.rue.TabIndex = 5;
             // 
-            // textBox2
+            // clt
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox2.Location = new System.Drawing.Point(155, 52);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(883, 22);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addCdeClt);
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.addCdeCltt);
+            this.clt.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.clt.Location = new System.Drawing.Point(155, 52);
+            this.clt.Name = "clt";
+            this.clt.Size = new System.Drawing.Size(883, 22);
+            this.clt.TabIndex = 4;
+            this.clt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addCdeClt);
+            this.clt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.addCdeCltt);
             // 
             // dateTimePicker1
             // 
@@ -200,7 +201,7 @@ namespace WindowsFormsApp1
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(156, 18);
+            this.textBox1.Location = new System.Drawing.Point(178, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(68, 22);
             this.textBox1.TabIndex = 1;
@@ -209,7 +210,7 @@ namespace WindowsFormsApp1
             // 
             this.label1.Location = new System.Drawing.Point(14, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 24);
+            this.label1.Size = new System.Drawing.Size(158, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Référence commande";
             // 
@@ -278,6 +279,7 @@ namespace WindowsFormsApp1
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Location = new System.Drawing.Point(12, 550);
@@ -285,6 +287,13 @@ namespace WindowsFormsApp1
             this.groupBox3.Size = new System.Drawing.Size(1101, 77);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(413, 28);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(188, 22);
+            this.textBox7.TabIndex = 7;
             // 
             // button5
             // 
@@ -304,6 +313,7 @@ namespace WindowsFormsApp1
             this.button4.TabIndex = 5;
             this.button4.Text = "Valider";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // F
             // 
@@ -316,13 +326,17 @@ namespace WindowsFormsApp1
             this.Name = "F";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ajout de Commande";
+            this.Load += new System.EventHandler(this.F_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.TextBox textBox7;
 
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -348,17 +362,17 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.Label label3;
 
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.TextBox rue;
+        public System.Windows.Forms.TextBox ville;
+        public System.Windows.Forms.TextBox cp;
+        public System.Windows.Forms.TextBox tel;
 
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox clt;
 
         private System.Windows.Forms.Label label2;
 
-        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBox1;
 
         private System.Windows.Forms.Label label1;
 

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+// ReSharper disable PossibleNullReferenceException
 
 namespace WindowsFormsApp1
 {
@@ -34,7 +35,7 @@ namespace WindowsFormsApp1
             Connexion conn = new Connexion();
           
             DataTable tableCde = new DataTable();
-            MySqlCommand commnand = new MySqlCommand("SELECT CodeProduit as 'Produit', p.Designation as 'Des', t.Designation as 'Type Produit' FROM produit p, tproduit t where t.CodeTProduit=p.CodeTProduit", conn.getConnection());
+            MySqlCommand commnand = new MySqlCommand("SELECT CodeProduit as Produit, p.Designation as 'Des', t.Designation as 'Type Produit' FROM produit p, tproduit t where t.CodeTProduit=p.CodeTProduit", conn.getConnection());
             MySqlDataAdapter adapterCde = new MySqlDataAdapter();
             
             adapterCde.SelectCommand = commnand;
@@ -46,10 +47,14 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
             Ajouter_une_nouvelle_ligne_commande nouvelleLigneCommande = new Ajouter_une_nouvelle_ligne_commande();
-            nouvelleLigneCommande.codeP.Text=dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            nouvelleLigneCommande.type.Text=dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            nouvelleLigneCommande.des.Text=dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            nouvelleLigneCommande.codeP.Text=dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            nouvelleLigneCommande.des.Text=dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            nouvelleLigneCommande.type.Text=dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            
+            nouvelleLigneCommande.ShowDialog();
+           
             
         }
 
@@ -58,15 +63,16 @@ namespace WindowsFormsApp1
             DataView dv = new DataView(tableCde1);
             dv.RowFilter = string.Format("Produit LIKE '%{0}%'", textBox6.Text);
             dataGridView1.DataSource = dv;
+            //dataGridView1.DataSource = PopulateDataGridView();
         }
         
         private DataTable PopulateDataGridView()
         {
             Connexion conn = new Connexion();
             conn.openConnection();
-            string query = "SELECT p.CodeProduit as 'Produit', p.Designation as 'Designation', t.Designation as 'Type Produit' FROM produit p, tproduit t";
-            query += " where c.NumCleint=d.NumClient and NumCmd = '%' + @value + '%'";
-            query += " OR @value = ''";
+            string query = "SELECT p.CodeProduit as 'Produit', p.Designation as 'Des', t.Designation as 'Type Produit' FROM produit p, tproduit t";
+            query += " where t.CodeTProduit=p.CodeTProduit and p.Designation LIKE '%'@value'%'";
+           // query += " OR @value = ''";
             
                 
             MySqlCommand cmd = new MySqlCommand(query, conn.getConnection());

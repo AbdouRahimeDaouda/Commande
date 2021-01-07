@@ -25,8 +25,10 @@ namespace WindowsFormsApp1
 
                 e.Handled = true;
                 e.SuppressKeyPress = true;
+                
                 Ligne_de_Cde ligne = new Ligne_de_Cde(); 
                 ligne.ShowDialog();
+                this.Close();
                
             }
         }
@@ -35,6 +37,7 @@ namespace WindowsFormsApp1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                
                 e.Handled = true;
                
             }
@@ -54,12 +57,14 @@ namespace WindowsFormsApp1
         }
         private void button4_Click(object sender, EventArgs e)
         {
+            F f = new F();
 
                 Connexion conn = new Connexion();
           
-                MySqlCommand commnand = new MySqlCommand("INSERT INTO `lignecommande`(`CodeProduit`, `Qte`, `Prix`) VALUES (@codeP, @qte, @prix)", conn.getConnection());
+                MySqlCommand commnand = new MySqlCommand("INSERT INTO `lignecommande`(`CodeProduit`,`NumCmd`, `Qte`, `Prix`) VALUES (@codeP, @ref, @qte, @prix)", conn.getConnection());
                 
                 commnand.Parameters.Add("@codeP", MySqlDbType.VarChar).Value = codeP.Text;
+                commnand.Parameters.Add("@ref", MySqlDbType.VarChar).Value = f.textBox1.Text;
                 commnand.Parameters.Add("@qte", MySqlDbType.VarChar).Value = qte.Text;
                 commnand.Parameters.Add("@prix", MySqlDbType.VarChar).Value = prix.Text;
 
@@ -74,6 +79,8 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+
+       
     }
     
 }

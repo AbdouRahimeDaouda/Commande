@@ -16,11 +16,11 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             F f = new F();
-            f.textBox2.Text =dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            f.textBox3.Text =dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            f.textBox4.Text =dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            f.textBox5.Text =dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            f.textBox6.Text =dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            f.clt.Text =dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            f.rue.Text =dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            f.ville.Text =dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            f.cp.Text =dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            f.tel.Text =dataGridView1.CurrentRow.Cells[5].Value.ToString();
 
             
             f.ShowDialog();
@@ -66,8 +66,8 @@ namespace WindowsFormsApp1
            
             F f = new F();
            
-            f.textBox3.Text =dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            f.textBox4.Text =dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            f.rue.Text =dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            f.ville.Text =dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
         }
 
