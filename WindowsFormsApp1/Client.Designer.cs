@@ -154,7 +154,7 @@ namespace WindowsFormsApp1
             // 
             this.button3.Location = new System.Drawing.Point(14, 163);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 28);
+            this.button3.Size = new System.Drawing.Size(110, 54);
             this.button3.TabIndex = 30;
             this.button3.Text = "Client inexistant";
             this.button3.UseVisualStyleBackColor = true;

@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
             commnand.ExecuteNonQuery();
             
             conn.closeConnection();
-            textBox7.Text = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+           
         }
     }
 }
