@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
             Connexion conn = new Connexion();
            MySqlCommand commnand = new MySqlCommand("INSERT INTO `produit`(`CodeProduit`, `Designation`, `CodeTProduit`) VALUES (@codeP,@des,(SELECT CodeTProduit from tproduit WHERE tproduit.Designation=@typeP))", conn.getConnection());
             commnand.Parameters.Add("@codeP", MySqlDbType.VarChar).Value = codeP.Text;

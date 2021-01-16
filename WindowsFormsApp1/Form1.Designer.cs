@@ -94,6 +94,7 @@
             // 
             // ligneCdeTab
             // 
+            this.ligneCdeTab.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ligneCdeTab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ligneCdeTab.Location = new System.Drawing.Point(25, 45);
             this.ligneCdeTab.Name = "ligneCdeTab";
@@ -169,6 +170,7 @@
             // 
             // commandeTab
             // 
+            this.commandeTab.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.commandeTab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.commandeTab.Location = new System.Drawing.Point(25, 61);
             this.commandeTab.Name = "commandeTab";

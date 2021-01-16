@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Commande@localhost" uuid="2df17e5a-b24e-4d33-b897-ca4326e78dc1">
+    <data-source source="LOCAL" name="commande@localhost" uuid="0df44397-809c-4888-b81f-5d5fdcfa8663">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3308/Commande</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3308/commande</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
         <property name="serverTimezone" value="UTC" />

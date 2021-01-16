@@ -35,19 +35,28 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
+
+           // int id=Convert.ToInt32((commandeTab.CurrentRow.Cells[0].Value.ToString()));
             Connexion conn = new Connexion();
-          
+            // ReSharper disable once PossibleNullReferenceException
+            conn.openConnection();
+            
+            
             MySqlCommand commnand = new MySqlCommand("select NumCmd as 'RefCommande', DateCommande as 'Date', Nom as 'Nom' from commande d, client c where c.NumCleint=d.NumClient", conn.getConnection());
-            MySqlCommand ligne = new MySqlCommand("select p.Designation as 'Produit', l.Qte as  'Quantite', l.Prix as  'Prix' from produit p, lignecommande l where p.CodeProduit=l.CodeProduit", conn.getConnection());
+           // MySqlCommand ligne = new MySqlCommand("select p.Designation as 'Produit', l.Qte as  'Quantite', l.Prix as  'Prix' from produit p, lignecommande l where p.CodeProduit=l.CodeProduit", conn.getConnection());
             MySqlDataAdapter adapterCde = new MySqlDataAdapter();
             MySqlDataAdapter adapterLine = new MySqlDataAdapter();
+           
+           // ligne.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             
+            //ligne.ExecuteNonQuery();
             adapterCde.SelectCommand = commnand;
-            adapterLine.SelectCommand = ligne;
+           // adapterLine.SelectCommand = ligne;
             adapterCde.Fill(tableCde);
-            adapterLine.Fill(tableLine);
+           // adapterLine.Fill(tableLine);
             commandeTab.DataSource = tableCde;
-            ligneCdeTab.DataSource = tableLine;
+            //ligneCdeTab.DataSource = tableLine;
             
 
           
@@ -95,11 +104,24 @@ namespace WindowsFormsApp1
 
         private void cdeTab(object sender, DataGridViewCellEventArgs e)
         {
+
+            
+            int id=Convert.ToInt32((commandeTab.CurrentRow.Cells[0].Value.ToString()));
             textBox6.Text = commandeTab.CurrentRow.Cells[2].Value.ToString();
             Connexion conn = new Connexion();
             conn.openConnection();
             MySqlCommand commnand = new MySqlCommand("select p.Designation as 'Produit', l.Qte as  'Quantite', l.Prix as  'Prix' from produit p, lignecommande l, client c, commande d where (p.CodeProduit=l.CodeProduit and c.NumCleint=d.NumClient and d.NumCmd=l.NumCmd and  c.Nom=@Nom)", conn.getConnection());
             commnand.Parameters.AddWithValue("@Nom", textBox6.Text);
+            MySqlCommand ligne = new MySqlCommand("select p.Designation as 'Produit', l.Qte as  'Quantite', l.Prix as  'Prix' from produit p, lignecommande l where p.CodeProduit=l.CodeProduit and l.NumCmd=@id", conn.getConnection());
+            MySqlDataAdapter adapterLine = new MySqlDataAdapter();
+            DataTable tableLine2 = new DataTable();
+            ligne.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            ligne.ExecuteNonQuery();
+            adapterLine.SelectCommand = ligne;
+            
+            adapterLine.Fill(tableLine2);
+            
+            ligneCdeTab.DataSource = tableLine2;
         }
 
         private void refCde(object sender, EventArgs e)
@@ -111,11 +133,13 @@ namespace WindowsFormsApp1
       
         private DataTable PopulateDataGridView()
         {
+            DataTable dt = new DataTable();
+            
             Connexion conn = new Connexion();
             conn.openConnection();
             string query = "select NumCmd as 'RefCommande', DateCommande as 'Date', Nom as 'Nom' from commande d, client c";
-            query += " where c.NumCleint=d.NumClient and NumCmd = '%' + @value + '%'";
-            query += " OR @value = ''";
+            query += " where d.NumCmd = '%' + @value + '%'";
+            query += " OR @value =' '";
             
                 
                 MySqlCommand cmd = new MySqlCommand(query, conn.getConnection());
@@ -123,8 +147,7 @@ namespace WindowsFormsApp1
                     cmd.Parameters.AddWithValue("@value", textBox11.Text.Trim());
                     MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                     
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
+                    sda.Fill(dt);
                         return dt;
                     
                 
@@ -177,20 +200,41 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int id=Convert.ToInt32((commandeTab.CurrentRow.Cells[0].Value.ToString()));
-            Connexion conn = new Connexion();
-          
-            DataTable tableCde = new DataTable();
-            MySqlCommand commnand = new MySqlCommand("DELETE FROM `commande` WHERE NumCmd=@id", conn.getConnection());
-            MySqlCommand commnand1 = new MySqlCommand("select NumCmd as 'RefCommande', DateCommande as 'Date', Nom as 'Nom' from commande d, client c where c.NumCleint=d.NumClient", conn.getConnection());
+            if (commandeTab.SelectedRows.Count > 0)
+            {
+                string MessageBoxTitle = "Validation de la Suppression";
+                string MessageBoxContent = "Voulez-vous vraiment supprimer cette commande?";
 
-            commnand.Parameters.Add("@id", MySqlDbType.VarChar).Value = id;
-            MySqlDataAdapter adapterCde = new MySqlDataAdapter();
-            conn.openConnection();
-            commnand.ExecuteNonQuery();
-            adapterCde.SelectCommand = commnand1;
-            adapterCde.Fill(tableCde);
-            commandeTab.DataSource = tableCde;
+                DialogResult dialogResult = MessageBox.Show(MessageBoxContent, MessageBoxTitle, MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+                if(dialogResult == DialogResult.Yes)
+                {
+                    int id=Convert.ToInt32((commandeTab.CurrentRow.Cells[0].Value.ToString()));
+                    Connexion conn = new Connexion();
+          
+                    DataTable tableCde = new DataTable();
+                    MySqlCommand commnand = new MySqlCommand("DELETE FROM `commande` WHERE NumCmd=@id", conn.getConnection());
+                    MySqlCommand commnand1 = new MySqlCommand("select NumCmd as 'RefCommande', DateCommande as 'Date', Nom as 'Nom' from commande d, client c where c.NumCleint=d.NumClient", conn.getConnection());
+
+                    commnand.Parameters.Add("@id", MySqlDbType.VarChar).Value = id;
+                    MySqlDataAdapter adapterCde = new MySqlDataAdapter();
+                    conn.openConnection();
+                    commnand.ExecuteNonQuery();
+                    adapterCde.SelectCommand = commnand1;
+                    adapterCde.Fill(tableCde);
+                    commandeTab.DataSource = tableCde;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+     
+                
+            }
+            else
+            {
+                MessageBox.Show("Please select a rows.");
+            }
+          
         }
     }
 }

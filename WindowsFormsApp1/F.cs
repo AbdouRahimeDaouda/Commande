@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -11,14 +12,16 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-      
+        DataTable dt = new DataTable();
+        //public static DataTable dt;
+       MySqlDataAdapter adapterCde= new MySqlDataAdapter();
       
 
         private void label6_Click(object sender, EventArgs e)
         {
             throw new System.NotImplementedException();
         }
-
+        Client client = new Client();
         private void button3_Click(object sender, EventArgs e)
         {
             throw new System.NotImplementedException();
@@ -32,7 +35,7 @@ namespace WindowsFormsApp1
 
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-                Client client = new Client();  
+                  
                 client.ShowDialog();
                
             }
@@ -46,12 +49,46 @@ namespace WindowsFormsApp1
                
             }
         }
+        private void f_UpdateEventHandler(object sender, Ajouter_une_nouvelle_ligne_commande.UpdateEventArgs args)
+        {
+            dv1.DataSource = getAllLines();
+
+        }
+        public DataTable getAllLines()
+        {
+            Connexion conn = new Connexion(); 
+            //MySqlCommand commnandL = new MySqlCommand("select Designation as 'Produit', Qte as 'Quantite', Prix from lignecommande l, produit p where p.CodeProduit=l.CodeProduit", conn.getConnection());
+            MySqlCommand commnandL = new MySqlCommand("select * from lignecommande", conn.getConnection());
+            adapterCde.SelectCommand = commnandL;
+            adapterCde.Fill(dt);
+            dv1.DataSource = dt;
+            return dt;
+
+        }
+     
+        public DataTable getAllClient()
+        {
+            Connexion conn = new Connexion();
+          
+            DataTable tableCde = new DataTable();
+            MySqlCommand commnand = new MySqlCommand("select * from lignecommande", conn.getConnection());
+            MySqlDataAdapter adapterCde = new MySqlDataAdapter();
+            
+            adapterCde.SelectCommand = commnand;
+            adapterCde.Fill(tableCde);
+            dv1.DataSource = tableCde;
+            return tableCde;
+
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
             Ajouter_une_nouvelle_ligne_commande nouvelleLigneCommande = new Ajouter_une_nouvelle_ligne_commande();
+           // nouvelleLigneCommande.UpdateEventHandler += f_UpdateEventHandler;
             nouvelleLigneCommande.ShowDialog();
+            
         }
 
 
@@ -60,8 +97,20 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
+        public DataTable dataTable=new DataTable();
+
+        public F(Ajouter_une_nouvelle_ligne_commande ajouterUneNouvelleLigneCommande)
+        {
+            throw new NotImplementedException();
+        }
+
+
         private void F_Load_1(object sender, EventArgs e)
         {
+            //dataGridView1.DataSource = getAllLines();
+            F f=new F();
+            Ajouter_une_nouvelle_ligne_commande nouvelleLigneCommande = new Ajouter_une_nouvelle_ligne_commande();
+
             Connexion conn = new Connexion();
             string query = "SELECT NumCmd FROM commande WHERE NumCmd=(SELECT max(NumCmd) FROM commande)";
             MySqlCommand commnand = new MySqlCommand(query, conn.getConnection());
@@ -70,7 +119,11 @@ namespace WindowsFormsApp1
             commnand.ExecuteNonQuery();
             textBox1.Text = result.ToString();
             conn.closeConnection();
+           
+            
+          
         }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {

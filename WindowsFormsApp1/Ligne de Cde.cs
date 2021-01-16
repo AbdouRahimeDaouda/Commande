@@ -47,13 +47,21 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            F f=new F();
             Ajouter_une_nouvelle_ligne_commande nouvelleLigneCommande = new Ajouter_une_nouvelle_ligne_commande();
+            
+            
+            nouvelleLigneCommande.TopMost = true;
+            nouvelleLigneCommande.StartPosition = FormStartPosition.CenterScreen;
+            nouvelleLigneCommande.Show();
             nouvelleLigneCommande.codeP.Text=dataGridView1.CurrentRow.Cells[0].Value.ToString();
             nouvelleLigneCommande.des.Text=dataGridView1.CurrentRow.Cells[1].Value.ToString();
             nouvelleLigneCommande.type.Text=dataGridView1.CurrentRow.Cells[2].Value.ToString();
+          
+            //nouvelleLigneCommande.Closed += (s, args) => this.Close(); 
             
-            nouvelleLigneCommande.ShowDialog();
+            this.Close();
            
             
         }

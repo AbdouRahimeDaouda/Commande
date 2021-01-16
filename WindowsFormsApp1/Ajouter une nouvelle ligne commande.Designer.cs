@@ -47,8 +47,10 @@ namespace WindowsFormsApp1
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -73,9 +75,9 @@ namespace WindowsFormsApp1
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(496, 133);
+            this.label4.Location = new System.Drawing.Point(526, 132);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 21);
+            this.label4.Size = new System.Drawing.Size(52, 21);
             this.label4.TabIndex = 20;
             this.label4.Text = "D.T.";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -84,7 +86,7 @@ namespace WindowsFormsApp1
             // 
             this.label2.Location = new System.Drawing.Point(6, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 21);
+            this.label2.Size = new System.Drawing.Size(103, 21);
             this.label2.TabIndex = 19;
             this.label2.Text = "Désignation";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -92,7 +94,7 @@ namespace WindowsFormsApp1
             // prix
             // 
             this.prix.BackColor = System.Drawing.SystemColors.Window;
-            this.prix.Location = new System.Drawing.Point(303, 134);
+            this.prix.Location = new System.Drawing.Point(333, 132);
             this.prix.Name = "prix";
             this.prix.Size = new System.Drawing.Size(187, 22);
             this.prix.TabIndex = 18;
@@ -110,14 +112,14 @@ namespace WindowsFormsApp1
             // 
             this.label6.Location = new System.Drawing.Point(24, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 21);
+            this.label6.Size = new System.Drawing.Size(85, 21);
             this.label6.TabIndex = 16;
             this.label6.Text = "Produit";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(262, 135);
+            this.label1.Location = new System.Drawing.Point(280, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 21);
             this.label1.TabIndex = 17;
@@ -127,14 +129,15 @@ namespace WindowsFormsApp1
             // qte
             // 
             this.qte.BackColor = System.Drawing.SystemColors.Window;
-            this.qte.Location = new System.Drawing.Point(95, 134);
+            this.qte.Location = new System.Drawing.Point(115, 132);
             this.qte.Name = "qte";
             this.qte.Size = new System.Drawing.Size(161, 22);
             this.qte.TabIndex = 8;
+            this.qte.TextChanged += new System.EventHandler(this.qte_TextChanged);
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(325, 32);
+            this.label7.Location = new System.Drawing.Point(333, 32);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 18);
             this.label7.TabIndex = 13;
@@ -144,7 +147,7 @@ namespace WindowsFormsApp1
             // codeP
             // 
             this.codeP.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.codeP.Location = new System.Drawing.Point(95, 32);
+            this.codeP.Location = new System.Drawing.Point(115, 30);
             this.codeP.Name = "codeP";
             this.codeP.Size = new System.Drawing.Size(174, 22);
             this.codeP.TabIndex = 5;
@@ -154,16 +157,16 @@ namespace WindowsFormsApp1
             // type
             // 
             this.type.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.type.Location = new System.Drawing.Point(382, 32);
+            this.type.Location = new System.Drawing.Point(402, 30);
             this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(146, 22);
+            this.type.Size = new System.Drawing.Size(176, 22);
             this.type.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.Location = new System.Drawing.Point(24, 133);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 21);
+            this.label8.Size = new System.Drawing.Size(85, 21);
             this.label8.TabIndex = 14;
             this.label8.Text = "Quantité";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -171,9 +174,9 @@ namespace WindowsFormsApp1
             // des
             // 
             this.des.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.des.Location = new System.Drawing.Point(95, 84);
+            this.des.Location = new System.Drawing.Point(115, 84);
             this.des.Name = "des";
-            this.des.Size = new System.Drawing.Size(433, 22);
+            this.des.Size = new System.Drawing.Size(463, 22);
             this.des.TabIndex = 6;
             // 
             // groupBox2
@@ -206,12 +209,22 @@ namespace WindowsFormsApp1
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(31, 391);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(687, 232);
+            this.dataGridView1.TabIndex = 38;
+            // 
             // Ajouter_une_nouvelle_ligne_commande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(675, 376);
+            this.ClientSize = new System.Drawing.Size(912, 636);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Ajouter_une_nouvelle_ligne_commande";
@@ -220,8 +233,11 @@ namespace WindowsFormsApp1
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
         }
+
+        public System.Windows.Forms.DataGridView dataGridView1;
 
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
